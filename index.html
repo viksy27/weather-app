@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div class='preloader'>
+      <img src="assets/icons/preloader.gif" class="preloader-icon" alt="preloader">
+    </div>    
+    
+    <div class="container">
+
+      <header class="header">
+        <h1 class="title">Weather in <span class="city-name">Kyiv</span></h1>
+        <div class="temp-units">
+          <span class="celcius"> &deg;С</span>
+          <label class="switch">
+            <input type="checkbox" class="temp-units-select">
+            <span class="slider"></span>
+          </label>
+          <span class="farenheit"> &deg;F</span>
+        </div>
+      </header>
+
+      <form class="search">
+        <input
+          type="search"
+          class="search-input"
+          placeholder="Search for a city.."
+          pattern="^([a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ]+\s?){3,}$"
+          required
+        />
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+
+      <template class="current-weather-template">
+        <div class="temp">
+          <div class="temp-wrapper">
+            <div class="current-temp">{{temp}}</div><span class="current-unit">&deg;{{units}}</span>
+          </div>
+          <img class="current-weather-icon" src="{{weatherIcon}}" alt="Weather icon">
+        </div>
+  
+        <p class="feels-like">Feels like <span class="feels-like-value">{{feelsLike}}</span><span class="current-unit">&deg;{{units}}</span></p>
+  
+        <div class="humidity">Humidity: <span class="humidity-value">{{humidity}}</span>%</div>
+        <div>Wind: <span class="humidity-value">{{wind}}</span>m/s</div>
+      </template>
+      <div class="current-weather-container"></div>
+      
+      <div class="forecast">
+        <h2>Forecast</h2>
+        <hr>
+        <div class="forecast-container">
+          <template class="forecast-template">
+              <div class="forecast-day">{{day}}</div>
+              <img src="{{weatherIcon}}" alt="Weather icon">
+              <div class="temp-wrapper">
+                <div class="forecast-temp">{{temp}}</div><span class="current-unit">&deg;{{units}}</span>
+              </div>
+          </template>
+        </div>
+      </div>
+      <hr>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/mustache@latest"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
