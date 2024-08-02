@@ -126,7 +126,6 @@ async function getForecastByCityName() {
                     temp: Math.round(item.main.temp)
                 }
             }
-            console.log(new Date(item.dt));
         })
 
         Object.values(dailyForecasts).forEach(forecast => {
