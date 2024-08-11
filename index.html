@@ -9,12 +9,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
   </head>
   <body>
-    <div class='preloader'>
-      <img src="assets/icons/preloader.gif" class="preloader-icon" alt="preloader">
-    </div>    
-    
     <div class="container">
 
       <header class="header">
@@ -45,7 +42,9 @@
           <div class="temp-wrapper">
             <div class="current-temp">{{temp}}</div><span class="current-unit">&deg;{{units}}</span>
           </div>
-          <img class="current-weather-icon" src="{{weatherIcon}}" alt="Weather icon">
+
+          <dotlottie-player src="{{weatherIcon}}"background="transparent" speed="2" style="width: 100px; height: 100px" direction="1" playMode="none" loop="true" autoplay="true"></dotlottie-player>
+
         </div>
   
         <p class="feels-like">Feels like <span class="feels-like-value">{{feelsLike}}</span><span class="current-unit">&deg;{{units}}</span></p>
@@ -61,7 +60,7 @@
         <div class="forecast-container">
           <template class="forecast-template">
               <div class="forecast-day">{{day}}</div>
-              <img src="{{weatherIcon}}" alt="Weather icon">
+              <dotlottie-player src="{{weatherIcon}}"background="transparent" speed="2" style="width: 50px; height: 50px" direction="1" playMode="none" loop="true" autoplay="true"></dotlottie-player>
               <div class="temp-wrapper">
                 <div class="forecast-temp">{{temp}}</div><span class="current-unit">&deg;{{units}}</span>
               </div>
@@ -71,7 +70,6 @@
       <hr>
       </div>
     </div>
-
     <script src="https://unpkg.com/mustache@latest"></script>
     <script src="main.js"></script>
   </body>

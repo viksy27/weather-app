@@ -29,7 +29,7 @@ body {
 .container {
   margin: 0 auto;
   padding: 15px 15px;
-  width: 70%;
+  width: 35%;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.7);
   -webkit-backdrop-filter: blur(12px);
@@ -105,7 +105,7 @@ body {
 }
 
 .temp-units-select:checked + .slider::before {
-  background-color: #eca783;
+  background-color: #e783ec;
 }
 
 .temp-units-select:checked + .slider:before {
@@ -128,10 +128,15 @@ body {
 }
 .search-input {
   font-family: "Montserrat", sans-serif;
-  border: 1px solid transparent;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #7a7a7a;
+  border-radius: 3px;
   outline: none;
   margin-right: 5px;
   padding: 5px 10px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 .search-input::-webkit-input-placeholder {
   font-family: "Montserrat", sans-serif;
@@ -149,7 +154,7 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 .search-input:focus {
-  border: 1px solid #2d2b2e;
+  border: 1px solid #fff;
 }
 .search-btn {
   padding: 5px 10px;
@@ -258,7 +263,7 @@ h2 {
   top: 0;
   left: 0;
   position: fixed;
-  background-color: #eca783;
+  background-color: #e783ec;
   z-index: 100;
 }
 .preloader-icon {
@@ -287,6 +292,11 @@ h2 {
   }
   100% {
     opacity: 0;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: 80%;
   }
 }
 @media only screen and (max-width: 730px) {
