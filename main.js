@@ -1,13 +1,32 @@
-let currentWeatherTemplate = document.querySelector('.current-weather-template').innerHTML
-let currentWeatherContainer = document.querySelector('.current-weather-container')
-let cityNameEl = document.querySelector('.city-name')
-let input = document.querySelector('.search-input')
-let templateCard = document.querySelector('.forecast-template').innerHTML
-let forecastContainer = document.querySelector('.forecast-container')
+const currentWeatherTemplate = document.querySelector('.current-weather-template').innerHTML
+const currentWeatherContainer = document.querySelector('.current-weather-container')
+const cityNameEl = document.querySelector('.city-name')
+const input = document.querySelector('.search-input')
+const templateCard = document.querySelector('.forecast-template').innerHTML
+const forecastContainer = document.querySelector('.forecast-container')
+const dateEl = document.querySelector('.date')
+const timeEl = document.querySelector('.time')
 let isFarenheit = false
 let lat = 0
 let long = 0
 let userCityName = ''
+const now = new Date()
+
+const monthsArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+function showCurrentDateTime() {
+    let date = now.getDate()
+    let month = monthsArr[now.getMonth()]
+    let year = now.getFullYear()
+    let hours = now.getHours()
+    let minutes = now.getMinutes()
+
+    hours = hours < 10 ? '0' + hours : hours
+    minutes = minutes < 10 ? '0' + minutes : minutes
+
+    dateEl.innerHTML = `${date} ${month}, ${year}`
+    timeEl.innerHTML = `${hours}:${minutes}`
+}
 
 navigator.geolocation.getCurrentPosition(isLocation, isNavigatorError)
 
@@ -73,6 +92,7 @@ async function showWeatherByCityName(userCityName) {
         humidity: data.main.humidity,
         wind: data.wind.speed
     })
+    
     currentWeatherContainer.innerHTML = content
     cityNameEl.innerHTML = data.name
 }
@@ -96,10 +116,12 @@ async function showForecastByCityName(cityName) {
     const dailyForecasts = {}
 
     data.list.forEach(item => {
-        const date = item.dt_txt.split(' ')[0] 
-        if ( !dailyForecasts[date] ) {
-            dailyForecasts[date] = {
-                date: date,
+        const date = item.dt_txt.split(' ')[0].split('-').reverse()
+        const formattedDate = `${date[0]}.${date[1]}.${date[2]}`
+
+        if ( !dailyForecasts[formattedDate] ) {
+            dailyForecasts[formattedDate] = {
+                date: formattedDate,
                 weatherIcon: `./assets/lottie/${item.weather[0].icon}.json`,
                 temp: Math.round(item.main.temp)
             }
@@ -141,5 +163,8 @@ function celsiusToFahrenheit(e) {
         isFarenheit = false
     }
 }
+
+showCurrentDateTime()
+setInterval(showCurrentDateTime, 1000)
 
 document.querySelector('.temp-units-select').addEventListener('click', celsiusToFahrenheit)

@@ -15,7 +15,18 @@
     <div class="container">
 
       <header class="header">
-        <h1 class="title">Weather in <span class="city-name">Kyiv</span></h1>
+        <div class="header-info">
+          <div>
+            <img src="assets/icons/location.svg" alt="Location icon">
+            <span class="city-name"></span>
+          </div>
+          <div>
+            <img src="assets/icons/calendar.svg" alt="Location icon">
+            <span class="date"></span>
+            <span class="time">Time</span>
+          </div>
+        </div>
+        <!-- <h1 class="title">Weather in <span class="city-name"></span></h1> -->
         <div class="temp-units">
           <span class="celcius"> &deg;С</span>
           <label class="switch">
@@ -43,8 +54,7 @@
             <div class="current-temp">{{temp}}</div><span class="current-unit">&deg;{{units}}</span>
           </div>
 
-          <dotlottie-player src="{{weatherIcon}}"background="transparent" speed="2" style="width: 100px; height: 100px" direction="1" playMode="none" loop="true" autoplay="true"></dotlottie-player>
-
+            <dotlottie-player class="weather-icon" src="{{weatherIcon}}"background="transparent" speed="2" style="width: 60px; height: 60px" direction="1" playMode="none" loop="true" autoplay="true"></dotlottie-player>
         </div>
   
         <p class="feels-like">Feels like <span class="feels-like-value">{{feelsLike}}</span><span class="current-unit">&deg;{{units}}</span></p>
@@ -60,7 +70,7 @@
         <div class="forecast-container">
           <template class="forecast-template">
               <div class="forecast-day">{{day}}</div>
-              <dotlottie-player src="{{weatherIcon}}"background="transparent" speed="2" style="width: 50px; height: 50px" direction="1" playMode="none" loop="true" autoplay="true"></dotlottie-player>
+              <dotlottie-player src="{{weatherIcon}}"background="transparent" speed="2" style="width: 40px; height: 40px" direction="1" playMode="none" loop="true" autoplay="true"></dotlottie-player>
               <div class="temp-wrapper">
                 <div class="forecast-temp">{{temp}}</div><span class="current-unit">&deg;{{units}}</span>
               </div>
